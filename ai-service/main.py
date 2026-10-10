@@ -57,6 +57,15 @@ async def health_check():
         "provider": settings.default_provider
     }
 
+@app.get("/", tags=["System"])
+async def root():
+    return {
+        "status": "online",
+        "service": "Eldercare AI Service",
+        "documentation": "/docs",
+        "health": "/health"
+    }
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
